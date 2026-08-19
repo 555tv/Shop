@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Management</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>User Management</h1>
+        <p>Add, update, delete and search users.</p>
+    </header>
+
+
+    <!-- ADD / UPDATE USER -->
+    <section class="card">
+
+        <h2 id="formTitle">Add User</h2>
+
+        <form id="userForm">
+
+            
+            <input 
+                type="hidden" 
+                id="userId"
+            >
+
+
+            <div class="form-group">
+
+                <label for="firstName">
+                    First Name
+                </label>
+
+                <input
+                    type="text"
+                    id="firstName"
+                    placeholder="John"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="lastName">
+                    Last Name
+                </label>
+
+                <input
+                    type="text"
+                    id="lastName"
+                    placeholder="Doe"
+                    required
+                >
+
+            </div>
+
+
+
+            <div class="form-group">
+
+                <label for="birthDate">
+                    Birth Date
+                </label>
+
+                <input
+                    type="date"
+                    id="birthDate"
+                    required
+                >
+
+            </div>
+
+
+
+            <button 
+                type="submit"
+                id="submitBtn"
+            >
+                Add User
+            </button>
+
+
+            <button
+                type="button"
+                id="cancelBtn"
+                style="display:none"
+            >
+                Cancel
+            </button>
+
+
+        </form>
+
+
+        <p id="message"></p>
+
+    </section>
+
+
+
+
+
+    <!-- SEARCH -->
+    <section class="card">
+
+        <h2>
+            Find Users
+        </h2>
+
+
+        <div class="form-group">
+
+            <label for="searchFirstName">
+                First Name
+            </label>
+
+            <input
+                type="text"
+                id="searchFirstName"
+                placeholder="John"
+            >
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label for="searchLastName">
+                Last Name
+            </label>
+
+            <input
+                type="text"
+                id="searchLastName"
+                placeholder="Doe"
+            >
+
+        </div>
+
+
+
+        <button id="searchBtn">
+            Search
+        </button>
+
+
+        <button id="showAllBtn">
+            Show All
+        </button>
+
+
+    </section>
+
+
+
+
+
+
+
+    <!-- USERS TABLE -->
+    <section class="card">
+
+
+        <div class="table-header">
+
+            <h2>
+                Users
+            </h2>
+
+
+            <button id="refreshBtn">
+                Refresh
+            </button>
+
+
+        </div>
+
+
+
+
+
+        <table>
+
+
+            <thead>
+
+            <tr>
+
+                <th>
+                    ID
+                </th>
+
+
+                <th>
+                    First Name
+                </th>
+
+
+                <th>
+                    Last Name
+                </th>
+
+
+                <th>
+                    Birth Date
+                </th>
+
+
+                <th>
+                    Actions
+                </th>
+
+
+            </tr>
+
+            </thead>
+
+
+
+
+
+            <tbody id="usersTable">
+
+            </tbody>
+
+
+
+        </table>
+
+
+
+    </section>
+
+
+
+</div>
+
+
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

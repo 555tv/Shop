@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package order;
+
+option go_package = "github.com/555tv/databaze/proto_contracts";
+
+service OrderService {
+    rpc GetOrder(GetOrderRequest) returns (Order);
+}
+
+message GetOrderRequest {
+    string id = 1;
+}
+
+message Order {
+    string id = 1;
+    string user_id = 2;
+    double total_price = 3;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package billing;
+
+option go_package = "github.com/555tv/databaze/proto_contracts";
+
+service BillingService {
+    rpc GetPayment(GetPaymentRequest) returns (Payment);
+}
+
+message GetPaymentRequest {
+    string id = 1;
+}
+
+message Payment {
+    string id = 1;
+    string order_id = 2;
+    double amount = 3;
+    string status = 4;
+}
