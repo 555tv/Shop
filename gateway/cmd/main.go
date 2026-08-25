@@ -34,7 +34,7 @@ func main() {
 	_ = userClient
 
 	// Регистрируем HTTP-маршруты
-	handler.RegisterRoutes()
+	handler.RegisterRoutes(userClient)
 
 	// Подключаем папку со статикой
 	fs := http.FileServer(http.Dir("./static"))

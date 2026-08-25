@@ -2,8 +2,8 @@ package server
 
 import (
 	"context"
-
 	"github.com/555tv/databaze/user_service/proto_contracts"
+	"log"
 )
 
 type UserServer struct {
@@ -15,7 +15,8 @@ func (s *UserServer) GetUser(
 	req *proto_contracts.GetUserRequest,
 ) (*proto_contracts.User, error) {
 
-	// Пока просто тестовый пользователь
+	log.Println("GetUser called via gRPC, ID:", req.Id)
+
 	return &proto_contracts.User{
 		Id:        req.Id,
 		FirstName: "John",

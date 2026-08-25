@@ -1,3 +1,9 @@
 package handler
 
-type Handler struct{}
+import (
+	"gate/internal/clients"
+)
+
+type Handler struct {
+	UserClient *clients.UserClient
+}

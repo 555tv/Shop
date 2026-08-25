@@ -1,12 +1,17 @@
 package handler
 
-import "net/http"
+import (
+	"net/http"
 
-// RegisterRoutes регистрирует все HTTP-маршруты.
-func RegisterRoutes() {
+	"gate/internal/clients"
+)
 
-	h := &Handler{}
+func RegisterRoutes(userClient *clients.UserClient) {
 
+	h := &Handler{
+		UserClient: userClient,
+	}
+	http.HandleFunc("GET /users/{id}", h.GetUser)
 	// CRUD
 	http.HandleFunc("GET /users", h.GetUsers)
 	http.HandleFunc("POST /users", h.CreateUser)
@@ -15,4 +20,5 @@ func RegisterRoutes() {
 
 	// Поиск пользователей
 	http.HandleFunc("GET /users/search", h.FindUsers)
+
 }
