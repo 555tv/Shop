@@ -1,33 +1,33 @@
 package main
 
 import (
+	"context"
 	"log"
-	"net"
 
-	"google.golang.org/grpc"
-
-	"github.com/555tv/databaze/user_service/internal/server"
-	"github.com/555tv/databaze/user_service/proto_contracts"
+	"github.com/jackc/pgx/v5"
 )
 
 func main() {
-
-	listener, err := net.Listen("tcp", ":50051")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	grpcServer := grpc.NewServer()
-
-	proto_contracts.RegisterUserServiceServer(
-		grpcServer,
-		&server.UserServer{},
+	config, err := pgx.ParseConfig(
+		"postgres://user_service@127.0.0.1:5432/users_db?sslmode=disable",
 	)
 
-	log.Println("User Service running on :50051")
-
-	if err := grpcServer.Serve(listener); err != nil {
-		log.Fatal(err)
+	if err != nil {
+		log.Fatal("Config error:", err)
 	}
 
+	config.Password = "user_service_password"
+
+	conn, err := pgx.ConnectConfig(
+		context.Background(),
+		config,
+	)
+
+	if err != nil {
+		log.Fatal("Failed to connect to PostgreSQL:", err)
+	}
+
+	defer conn.Close(context.Background())
+
+	log.Println("Connected to PostgreSQL")
 }
